@@ -71,3 +71,13 @@ nav ul li a:hover {
 .text-column {
     flex-basis: 60%;
 }
+
+.tab-titles {
+    display: flex;
+    margin: 20px 0 40px;
+}
+
+.tab-links {
+    margin-right: 25px;
+    cursor: pointer;
+}
