@@ -72,17 +72,17 @@
         </div>
 
 <script>
-    var tablinks = document.getElementsByClassName("tab-links")
-    var tabcontents = document.getElementsByClassName("tab-contents")
+    var tablinks = document.getElementsByClassName("tab-links") //tablinks holds all the tags that contain class "tab-links" i.e the tab titles.
+    var tabcontents = document.getElementsByClassName("tab-contents") //tabcontents holds all the tags that contain class "tab-contents" i.e the content for each tab.
     function opentab(tabname) {
         for(tablink of tablinks) {
-            tablink.classList.remove("active-link")
+            tablink.classList.remove("active-link") //remove the "active-link" class from all tablinks (removes the underline).
         }
         for(tabcontent of tabcontents) {
-            tabcontent.classList.remove("active-tab")
+            tabcontent.classList.remove("active-tab") //remove the "active-tab" class from all content tabs (removes the content).
         }
-        event.currentTarget.classList.add("active-link")
-        document.getElementById(tabname).classList.add("active-tab")
+        event.currentTarget.classList.add("active-link") //add "active-link" class name to the tab that was clicked on to make it underlined.
+        document.getElementById(tabname).classList.add("active-tab") //add "active-tab" class name to the tab that was clicked on to display relevant info.
     }
 </script>
 
