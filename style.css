@@ -28,3 +28,23 @@ nav ul li a {
 nav ul li a:hover {
     text-decoration: underline;
 }
+
+.header-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.header-text {
+    font-size: 20px;
+}
+
+.header-text h1 {
+    font-size: 40px;
+    margin-top: -20px;
+}
+
+.header-image img {
+    max-width: 50%;
+    max-height: 50%;
+}
