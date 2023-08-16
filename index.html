@@ -40,25 +40,25 @@
                             it just needs to be long enough so that it can appear as if it was the real thing. Does it wrap if I make it any longer?
                         </p>
                         <div class="tab-titles">
-                            <p class="tab-links">Skills</p>
-                            <p class="tab-links">Projects</p>
-                            <p class="tab-links">Education</p>
+                            <p class="tab-links active-link" onclick="opentab('skills')">Skills</p>
+                            <p class="tab-links" onclick="opentab('projects')">Projects</p>
+                            <p class="tab-links" onclick="opentab('experience')">Education</p>
                         </div>
-                        <div class="tab-contents">
+                        <div class="tab-contents active-tab" id="skills">
                             <ul>
                                 <li><span>Programming Languages</span><br>First lang, second lang, third lang</li>
                                 <li><span>Database</span><br>First db, second db, thirds db</li>
                                 <li><span>Version control</span><br>One version control, second version control</li>
                             </ul>
                         </div>
-                        <div class="tab-contents">
+                        <div class="tab-contents" id="projects">
                             <ul>
                                 <li><span>Project 1</span><br>Description of 1st project</li>
                                 <li><span>Project 2</span><br>Description of 2nd project</li>
                                 <li><span>Project 3</span><br>Description of 3rd project</li>
                             </ul>
                         </div>
-                        <div class="tab-contents">
+                        <div class="tab-contents" id="experience">
                             <ul>
                                 <li><span>Degree</span><br>Degree stuff</li>
                                 <li><span>A-level</span><br>A-level stuff</li>
@@ -70,5 +70,21 @@
 
             </div>
         </div>
+
+<script>
+    var tablinks = document.getElementsByClassName("tab-links")
+    var tabcontents = document.getElementsByClassName("tab-contents")
+    function opentab(tabname) {
+        for(tablink of tablinks) {
+            tablink.classList.remove("active-link")
+        }
+        for(tabcontent of tabcontents) {
+            tabcontent.classList.remove("active-tab")
+        }
+        event.currentTarget.classList.add("active-link")
+        document.getElementById(tabname).classList.add("active-tab")
+    }
+</script>
+
     </body>
 </html>

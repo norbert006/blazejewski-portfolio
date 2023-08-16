@@ -80,6 +80,22 @@ nav ul li a:hover {
 .tab-links {
     margin-right: 25px;
     cursor: pointer;
+    position: relative;
+}
+
+.tab-links::after {
+    content: '';
+    width: 0;
+    height: 3px;
+    background: green;
+    position: absolute;
+    left: 0;
+    bottom: -6px;
+    transition: 0.5s;
+}
+
+.tab-links.active-link::after {
+    width: 50%;
 }
 
 .tab-contents ul li{
@@ -90,4 +106,12 @@ nav ul li a:hover {
 .tab-contents span{
     color: green;
     font-size: 15px;
+}
+
+.tab-contents {
+    display: none;
+}
+
+.tab-contents.active-tab {
+    display: block;
 }
