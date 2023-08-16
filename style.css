@@ -1,6 +1,5 @@
 .container {
     padding: 10px 5%;
-
 }
 
 nav {
@@ -47,4 +46,28 @@ nav ul li a:hover {
 .header-image img {
     max-width: 50%;
     max-height: 50%;
+}
+
+#about {
+    padding: 80px 0;
+    color: black;
+}
+
+.row {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.image-column {
+    flex-basis: 35%;
+}
+
+.image-column img {
+    width: 100%;
+    border-radius: 15px;
+}
+
+.text-column {
+    flex-basis: 60%;
 }
