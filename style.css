@@ -134,6 +134,7 @@ nav ul li a:hover {
 }
 
 .work {
+    border-radius: 10px;
     position: relative;
     overflow: hidden;
 }
@@ -143,4 +144,20 @@ nav ul li a:hover {
     height: 100%;
     border-radius: 10px;
     display: block;
+}
+
+.layer {
+    width: 87%;
+    height: 100%;
+    color: antiquewhite;
+    background: linear-gradient(transparent, green);
+    border-radius: 10px;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: 0 40px;
 }
