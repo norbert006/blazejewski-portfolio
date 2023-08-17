@@ -144,11 +144,12 @@ nav ul li a:hover {
     height: 100%;
     border-radius: 10px;
     display: block;
+    transition: transform 0.5s;
 }
 
 .layer {
     width: 87%;
-    height: 100%;
+    height: 0%;
     color: antiquewhite;
     background: linear-gradient(transparent, green);
     border-radius: 10px;
@@ -160,4 +161,13 @@ nav ul li a:hover {
     justify-content: center;
     flex-direction: column;
     padding: 0 40px;
+    transition: height 0.5s;
+}
+
+.work:hover img {
+    transform: scale(1.1);
+}
+
+.work:hover .layer {
+    height: 100%
 }
