@@ -172,3 +172,34 @@ nav ul li a:hover {
 .work:hover .layer {
     height: 100%
 }
+
+/* ------------------------ Contact section ------------------------ */
+
+.contact-details p {
+    margin-top: 30px;
+}
+
+.contact-details i {
+    position: relative;
+    top: 5px;
+    left: 5px;
+}
+
+.contact-details p i {
+    color: green;
+    margin-right: 15px;
+    font-size: 25px;
+}
+
+.contact-details a i {
+    text-decoration: none;
+    font-size: 30px;
+    margin-right: 15px;
+    color: black;
+    transition: transform 0.5s;
+}
+
+.contact-details a i:hover {
+    color: green;
+    transform: translateY(-5px);
+}
