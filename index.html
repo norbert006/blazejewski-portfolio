@@ -1,31 +1,34 @@
 <!DOCTPYE html>
-<html lang="en">
+    <html lang="en">
+
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Portfolio Website</title>
         <link rel="stylesheet" href="style.css">
         <script src="https://kit.fontawesome.com/4c46794bba.js" crossorigin="anonymous"></script>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Courgette&family=PT+Mono&family=Ubuntu&display=swap"
+            rel="stylesheet">
     </head>
+
     <body>
-        
+
         <div id="header">
+            <nav>
+                <h2 class="logo">Website Logo</h2>
+                <ul>
+                    <li><a href="#">Button 1</a></li>
+                    <li><a href="#">Button 2</a></li>
+                    <li><a href="#">Button 3</a></li>
+                </ul>
+            </nav>
             <div class="container">
-                <nav>
-                    <h2 class="logo">Website Logo</h2>
-                    <ul>
-                        <li><a href="#">Button 1</a></li>
-                        <li><a href="#">Button 2</a></li>
-                        <li><a href="#">Button 3</a></li>
-                    </ul>
-                </nav>
                 <div class="header-content">
                     <div class="header-text">
-                        <p>Computer Science Graduate</p>
                         <h1>Hi, I'm Norbert Blazejewski</h1>
-                    </div>
-                    <div class="header-image">
-                        <img src="https://cdn.pixabay.com/photo/2018/01/18/23/02/laptop-3091427_1280.jpg" atl="default pic">
+                        <p>Computer Science Graduate</p>
                     </div>
                 </div>
             </div>
@@ -35,12 +38,14 @@
             <div class="container">
                 <div class="row">
                     <div class="image-column">
-                        <img src="https://cdn.pixabay.com/photo/2017/10/10/21/46/laptop-2838917_1280.jpg" alt="about image">
+                        <img src="https://cdn.pixabay.com/photo/2017/10/10/21/46/laptop-2838917_1280.jpg"
+                            alt="about image">
                     </div>
                     <div class="text-column">
                         <h1 class="sub-title">Profile</h1>
                         <p>This is just a temporary piece of text that will be changed out later. For now,
-                            it just needs to be long enough so that it can appear as if it was the real thing. Does it wrap if I make it any longer?
+                            it just needs to be long enough so that it can appear as if it was the real thing. Does it
+                            wrap if I make it any longer?
                         </p>
                         <div class="tab-titles">
                             <p class="tab-links active-link" onclick="opentab('skills')">Skills</p>
@@ -79,21 +84,24 @@
                 <h1 class="sub-title">My Work</h1>
                 <div class="work-list">
                     <div class="work">
-                        <img src="https://cdn.pixabay.com/photo/2016/11/19/14/00/code-1839406_1280.jpg" alt="programming image 1">
+                        <img src="https://cdn.pixabay.com/photo/2016/11/19/14/00/code-1839406_1280.jpg"
+                            alt="programming image 1">
                         <div class="layer">
                             <h3>Project example #1</h3>
                             <p>Description of the first project within the portfolio</p>
                         </div>
                     </div>
                     <div class="work">
-                        <img src="https://cdn.pixabay.com/photo/2015/12/04/14/05/code-1076536_1280.jpg" alt="programming image 2">
+                        <img src="https://cdn.pixabay.com/photo/2015/12/04/14/05/code-1076536_1280.jpg"
+                            alt="programming image 2">
                         <div class="layer">
                             <h3>Project example #2</h3>
                             <p>Description of the second project within the portfolio</p>
                         </div>
                     </div>
                     <div class="work">
-                        <img src="https://cdn.pixabay.com/photo/2016/11/30/20/58/programming-1873854_1280.png" alt="programming image 3">
+                        <img src="https://cdn.pixabay.com/photo/2016/11/30/20/58/programming-1873854_1280.png"
+                            alt="programming image 3">
                         <div class="layer">
                             <h3>Project example #3</h3>
                             <p>Description of the third project within the portfolio</p>
@@ -105,29 +113,35 @@
 
         <div id="contact">
             <div class="container">
-                    <div class="contact-details">
-                        <h1 class="sub-title">Contact Me</h1>
-                        <p><i class="fa-solid fa-envelope"></i>contact@example</p>
-                        <a href="https://www.linkedin.com/in/norbert-blazejewski-01a738193/"><i class="fa-brands fa-linkedin"></i></a>
-                    </div>
-                    <a href="CV.pdf" download class="btn">Download CV</a>
+                <div class="contact-details">
+                    <h1 class="sub-title">Contact Me</h1>
+                    <p><i class="fa-solid fa-envelope"></i>contact@example</p>
+                    <a href="https://www.linkedin.com/in/norbert-blazejewski-01a738193/"><i
+                            class="fa-brands fa-linkedin"></i></a>
+                </div>
+                <a href="CV.pdf" download class="btn">Download CV</a>
             </div>
-        </div>        
+        </div>
 
-<script>
-    var tablinks = document.getElementsByClassName("tab-links") //tablinks holds all the tags that contain class "tab-links" i.e the tab titles.
-    var tabcontents = document.getElementsByClassName("tab-contents") //tabcontents holds all the tags that contain class "tab-contents" i.e the content for each tab.
-    function opentab(tabname) {
-        for(tablink of tablinks) {
-            tablink.classList.remove("active-link") //remove the "active-link" class from all tablinks (removes the underline).
-        }
-        for(tabcontent of tabcontents) {
-            tabcontent.classList.remove("active-tab") //remove the "active-tab" class from all content tabs (removes the content).
-        }
-        event.currentTarget.classList.add("active-link") //add "active-link" class name to the tab that was clicked on to make it underlined.
-        document.getElementById(tabname).classList.add("active-tab") //add "active-tab" class name to the tab that was clicked on to display relevant info.
-    }
-</script>
+        <footer>
+            <p>Created by Norbert Blazejewski</p>
+        </footer>
+
+        <script>
+            var tablinks = document.getElementsByClassName("tab-links") //tablinks holds all the tags that contain class "tab-links" i.e the tab titles.
+            var tabcontents = document.getElementsByClassName("tab-contents") //tabcontents holds all the tags that contain class "tab-contents" i.e the content for each tab.
+            function opentab(tabname) {
+                for (tablink of tablinks) {
+                    tablink.classList.remove("active-link") //remove the "active-link" class from all tablinks (removes the underline).
+                }
+                for (tabcontent of tabcontents) {
+                    tabcontent.classList.remove("active-tab") //remove the "active-tab" class from all content tabs (removes the content).
+                }
+                event.currentTarget.classList.add("active-link") //add "active-link" class name to the tab that was clicked on to make it underlined.
+                document.getElementById(tabname).classList.add("active-tab") //add "active-tab" class name to the tab that was clicked on to display relevant info.
+            }
+        </script>
 
     </body>
-</html>
+
+    </html>

@@ -1,3 +1,14 @@
+* {
+    margin: 0;
+    font-family: 'Ubuntu', sans-serif;
+    box-sizing: border-box;
+}
+
+body {
+    background: #f7b7ac;
+    color: black;
+}
+
 .container {
     padding: 10px 5%;
 }
@@ -8,6 +19,8 @@ nav {
     display: flex;
     align-items: center;
     justify-content: space-between;
+    padding: 20px;
+    background: #E08C74;
 }
 
 .logo {
@@ -38,23 +51,18 @@ nav ul li a:hover {
 
 .header-text {
     font-size: 20px;
+    margin-top: 20px;
 }
 
 .header-text h1 {
     font-size: 40px;
-    margin-top: -20px;
-}
-
-.header-image img {
-    max-width: 50%;
-    max-height: 50%;
+    margin-top: 10px;
 }
 
 /* ------------------------ Profile/about me section ------------------------ */
 
 #about {
-    padding: 80px 0;
-    color: black;
+    padding: 30px 0;
 }
 
 .row {
@@ -85,13 +93,14 @@ nav ul li a:hover {
     margin-right: 25px;
     cursor: pointer;
     position: relative;
+    font-weight: 600;
 }
 
 .tab-links::after {
     content: '';
     width: 0;
     height: 3px;
-    background: green;
+    background: #625549;
     position: absolute;
     left: 0;
     bottom: -6px;
@@ -108,8 +117,10 @@ nav ul li a:hover {
 }
 
 .tab-contents span{
-    color: green;
-    font-size: 15px;
+    color: 625549;
+    font-size: 19px;
+    font-weight: 600;
+    color: black;
 }
 
 .tab-contents {
@@ -135,7 +146,6 @@ nav ul li a:hover {
 
 .work {
     border-radius: 10px;
- 
     position: relative;
     overflow: hidden;
 }
@@ -152,7 +162,7 @@ nav ul li a:hover {
     width: 100%;
     height: 0%;
     color: antiquewhite;
-    background: linear-gradient(transparent, green);
+    background: linear-gradient(transparent, #625549);
     border-radius: 10px;
     overflow: hidden;
     position: absolute;
@@ -176,7 +186,7 @@ nav ul li a:hover {
 /* ------------------------ Contact section ------------------------ */
 
 .contact-details p {
-    margin-top: 30px;
+    margin-top: 15px;
 }
 
 .contact-details i {
@@ -186,7 +196,7 @@ nav ul li a:hover {
 }
 
 .contact-details p i {
-    color: green;
+    color: #CB7161;
     margin-right: 15px;
     font-size: 25px;
 }
@@ -195,20 +205,21 @@ nav ul li a:hover {
     text-decoration: none;
     font-size: 30px;
     margin-right: 15px;
+    margin-top: 10px;
     color: black;
-    transition: transform 0.5s;
+    transition: transform 0.5s, color 0.5s;
 }
 
 .contact-details a i:hover {
-    color: green;
-    transform: translateY(-5px);
+    color: #CB7161;
+    transform: scale(1.2);
 }
 
 .btn {
     display: inline-block;
     margin: 20px auto;
     width: fit-content;
-    border: 1px solid black;
+    border: 1px solid #CB7161;
     padding: 14px 50px;
     border-radius: 6px;
     text-decoration: none;
@@ -217,5 +228,14 @@ nav ul li a:hover {
 }
 
 .btn:hover {
-    background: green;
+    background: #CB7161;
 }
+
+footer {
+    display: flex;
+    justify-content: center;
+    padding: 5px;
+    background-color: #E08C74;
+    color: #fff;
+    padding: 20px;
+  }
