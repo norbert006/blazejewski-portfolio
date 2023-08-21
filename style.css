@@ -203,3 +203,19 @@ nav ul li a:hover {
     color: green;
     transform: translateY(-5px);
 }
+
+.btn {
+    display: inline-block;
+    margin: 20px auto;
+    width: fit-content;
+    border: 1px solid black;
+    padding: 14px 50px;
+    border-radius: 6px;
+    text-decoration: none;
+    color: black;
+    transition: background 0.5s;
+}
+
+.btn:hover {
+    background: green;
+}
