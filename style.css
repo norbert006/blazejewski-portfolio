@@ -181,7 +181,7 @@ nav ul li a:hover::after {
     width: 100%;
     height: 0%;
     color: antiquewhite;
-    background: linear-gradient(transparent, #625549);
+    background: linear-gradient(transparent, #CB7161);
     border-radius: 10px;
     overflow: hidden;
     position: absolute;
@@ -224,7 +224,6 @@ nav ul li a:hover::after {
     text-decoration: none;
     font-size: 30px;
     margin-right: 15px;
-    margin-top: 10px;
     color: #CB7161;
     transition: transform 0.5s, color 0.5s;
 }
