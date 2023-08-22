@@ -1,0 +1,11 @@
+package uk.ac.rhul.cs2800;
+
+/**
+ * Class StrStack is a facade which provides a simplified stack of values of type String.
+ * 
+ * @author Norbert Blazejewski
+ *
+ */
+public class StrStack {
+  private final Stack strStack = new Stack();
+}

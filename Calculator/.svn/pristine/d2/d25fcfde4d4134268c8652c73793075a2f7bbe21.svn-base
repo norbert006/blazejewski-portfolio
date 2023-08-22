@@ -1,0 +1,34 @@
+package uk.ac.rhul.cs2800;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+
+class TestStrStack {
+  private StrStack strStack;
+
+  @BeforeEach
+  public void setup() {
+    strStack = new StrStack();
+  }
+
+  @Test // Test 1
+  void test_isEmpty() {
+    assertEquals(strStack.isEmpty(), true,
+        "Test a newly created strStack to see that it is empty (meaning it has size 0.");
+    // To pass this test, the value of strStack.size() must return 0.
+  }
+
+  @Test // Test 2
+  void test_push() {
+    assertEquals(strStack.isEmpty(), true, "Test a newly created strStack to see that it is empty.");
+    String item = "String";
+    strStack.push(item);
+    assertEquals(strStack.isEmpty(), false,
+        "Test the same stack to see that it is not empty since an item has been pushed onto the stack.");
+    // To pass this test, first the size of strStack must be 0 since nothing has been pushed onto
+    // the stack, meaning that isEmpty() returns as true. Later, after a String item has been pushed
+    // onto the stack, the size of strStack increases therefore isEmpty() should return false.
+  }
+
+}

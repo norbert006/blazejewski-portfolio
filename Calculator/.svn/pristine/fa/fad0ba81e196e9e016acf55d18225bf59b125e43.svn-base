@@ -1,0 +1,63 @@
+package uk.ac.rhul.cs2800;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+
+class TestRevPolishCalc {
+  RevPolishCalc rpc;
+
+  @BeforeEach
+  void setup() {
+    rpc = new RevPolishCalc();
+  }
+
+  @Test // Test 1
+  void testEvaluate() {
+    assertEquals(rpc.evaluate(" "), 10,
+        "Test (through faking) that the evaluate method returns 10 when an empty String is provided.");
+    // Nothing needs to be done to pass this test as it's using faking to return a set value (10).
+    // UPDATE: after writing Test 2, the evaluate method had to include an if statement in case the
+    // given expression was just an empty string.
+  }
+
+  @Test // Test 2
+  void testEvaluate2() {
+    assertEquals(rpc.evaluate("2"), 2,
+        "Test that evalute returns the same value that was given in the expression but parsed as a float");
+    // To pass the test the evaluate method returns the same value that was given in the expression.
+  }
+
+  @Test // Test 3
+  void testEvalauteTwoValueAddition() {
+    assertEquals(rpc.evaluate("1 4 +"), 5,
+        "Test evaluating that 1 4 + using Reverse Polish Notation produces 5.");
+    // This test successfully passes after debugging an issue which occurred in the stack class.
+    // This test passes when the provided expression evaluates to 5.
+  }
+
+  @Test // Test 4
+  void testEvaluateMoreAddition() {
+    assertEquals(rpc.evaluate("1 2 3 +"), 5,
+        "Test evaluating that 2 3 + using Reverse Polish Notation produces 5.");
+
+    assertEquals(rpc.evaluate("1 2 3 + 6 +"), 11, "Test evaluating that (2 + 3) + 6 = 11.");
+
+    assertEquals(rpc.evaluate("1 2 3 + 6 + + "), 12,
+        "Test evaluating that ((2 + 3) + 6) + 1 = 12.");
+
+    assertEquals(rpc.evaluate("1 2      3 +    6  + + "), 12,
+        "Testing to see if the expression if affected by the number white spaces");
+    // This set of tests checks if the expression is correctly evaluated when the addition sign is
+    // positioned differently. It also checks if expression is affected by the number of white
+    // spaces.
+  }
+
+  @Test // Test 5
+  void testEvaluateTwoValuesSubtraction() {
+    assertEquals(rpc.evaluate("4 1 -"), 3,
+        "Test evaluating that 4 1 - using Reverse Polish Notation produces 3.");
+    // To pass this test, a new case had to be added to the switch statement which recognised the
+    // minus sign. The test passes if the expression evaluates to 3.
+  }
+}

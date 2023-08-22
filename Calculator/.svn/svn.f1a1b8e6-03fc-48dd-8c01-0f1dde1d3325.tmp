@@ -1,0 +1,16 @@
+package uk.ac.rhul.cs2800;
+
+/**
+ * This custom exception is thrown when the user provides an illegal expression for the evaluate
+ * function of a calculator.
+ * 
+ * @author Norbert Blazejewski
+ *
+ */
+public class InvalidExpressionException extends Exception {
+  private static final long serialVersionUID = 4751580932899941450L;
+
+  public InvalidExpressionException(String str) {
+    super(str);
+  }
+}

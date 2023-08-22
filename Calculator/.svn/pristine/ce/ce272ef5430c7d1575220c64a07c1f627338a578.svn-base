@@ -1,0 +1,33 @@
+package uk.ac.rhul.cs2800;
+
+import static org.junit.jupiter.api.Assertions.*;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+
+public class TestOpStack {
+  private OpStack opStack;
+
+  @BeforeEach
+  public void setup() {
+    opStack = new OpStack();
+  }
+
+  @Test // Test 1
+  void test_isEmpty() {
+    assertEquals(opStack.isEmpty(), true,
+        "Test a newly created opStack to see that it is empty (meaning it has size 0.");
+    // To pass this test, the value of opStack.size() must return 0.
+  }
+
+  @Test // Test 2
+  void test_push() {
+    assertEquals(opStack.isEmpty(), true, "Test a newly created opStack to see that it is empty.");
+    Symbol item = Symbol.LEFT_BRACKET;
+    opStack.push(item);
+    assertEquals(opStack.isEmpty(), false,
+        "Test the same stack to see that it is not empty since an item has been pushed onto the stack.");
+    // To pass this test, first the size of opStack must be 0 since nothing has been pushed onto
+    // the stack, meaning that isEmpty() returns as true. Later, after a Symbol item has been pushed
+    // onto the stack, the size of opStack increases therefore isEmpty() should return false.
+  }
+}

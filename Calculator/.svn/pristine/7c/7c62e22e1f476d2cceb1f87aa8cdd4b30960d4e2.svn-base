@@ -1,0 +1,61 @@
+package uk.ac.rhul.cs2800;
+
+import java.util.ArrayList;
+import java.util.EmptyStackException;
+
+/**
+ * Stack implementation.
+ * 
+ * @author Norbert Blazejewski
+ *
+ */
+public class Stack {
+
+  int size = 0;
+  ArrayList<Entry> value = new ArrayList<Entry>();
+
+  /**
+   * Returns the number of elements in this list.
+   * 
+   * @return size of the stack.
+   */
+  public int size() {
+    return size;
+  }
+
+  /**
+   * Pushed an Entry onto the top of the stack.
+   * 
+   * @param i - the item to be pushed onto this stack.
+   */
+  public void push(Entry i) {
+    value.add(i);
+    size = size + 1;
+  }
+
+  /**
+   * Removes the object at the top of this stack and returns that object as the value of this
+   * function.
+   * 
+   * @return The object at the top of this stack.
+   */
+  public Entry pop() {
+    if (size == 0) {
+      throw new EmptyStackException();
+    }
+    size = size - 1;
+    return value.get(size);
+  }
+
+  /**
+   * Looks at the object at the top of this stack without removing it from the stack.
+   * 
+   * @return The object at the top of this stack.
+   */
+  public Entry top() {
+    if (size == 0) {
+      throw new EmptyStackException();
+    }
+    return value.get(size - 1);
+  }
+}

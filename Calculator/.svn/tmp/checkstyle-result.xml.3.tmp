@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<checkstyle version="8.29">
+<file name="C:\Users\Slawomir\eclipse-workspace\Calculator\src\main\java\uk\ac\rhul\cs2800\OpStack.java">
+<error line="26" column="6" severity="warning" message="Unused @param tag for &apos;value&apos;." source="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocMethodCheck"/>
+</file>
+<file name="C:\Users\Slawomir\eclipse-workspace\Calculator\src\main\java\uk\ac\rhul\cs2800\StrStack.java">
+<error line="26" column="6" severity="warning" message="Unused @param tag for &apos;value&apos;." source="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocMethodCheck"/>
+</file>
+</checkstyle>

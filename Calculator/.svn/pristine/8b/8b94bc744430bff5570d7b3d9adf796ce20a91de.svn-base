@@ -1,0 +1,13 @@
+package uk.ac.rhul.cs2800;
+
+import static org.junit.jupiter.api.Assertions.*;
+import org.junit.jupiter.api.Test;
+
+class TestOpStack {
+
+  @Test
+  void testBuildOpStack() {
+    OpStack opStack = new OpStack();
+    // To pass this test, a new opStack object must be created.
+  }
+}

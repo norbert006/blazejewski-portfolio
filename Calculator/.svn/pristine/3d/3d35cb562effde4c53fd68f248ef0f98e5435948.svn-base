@@ -1,0 +1,99 @@
+package uk.ac.rhul.cs2800;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+import java.util.EmptyStackException;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+
+class TestStack {
+  private Stack rs;
+  private Entry ent1;
+  private Entry ent2;
+  private Entry ent3;
+
+  @BeforeEach
+  public void setup() {
+    rs = new Stack();
+    ent1 = new Entry(10.0f);
+    ent2 = new Entry("String");
+    ent3 = new Entry(Symbol.LEFT_BRACKET);
+  }
+
+  @Test // Test 1
+  void testSize() {
+    Stack rs = new Stack();
+    assertEquals(0, rs.size(), "Test a newly created stack to see that it has size zero.");
+    // To pass this test I had to create the size method.
+  }
+
+  @Test // Test 2
+  void testPush() {
+    rs.push(ent1);
+    assertEquals(1, rs.size(), "Test a newly created stack to see that it has size one.");
+    // To pass this test I had to create the push method. It was first implemented to take an int
+    // but later adapted to take Entry values.
+  }
+
+  @Test // Test 3
+  void testEmptyPop() {
+    assertThrows(EmptyStackException.class, () -> rs.pop(), "You cannot pop from an empty stack");
+    // To pass this test I had to create the pop method which throws an exception if the size of the
+    // stack is 0.
+  }
+
+  @Test // Test 4
+  void pushThenPop() {
+    rs.push(ent1);
+    assertEquals(ent1, rs.pop(), "Pushing a 10.0 then popping it should return 10.0");
+    assertEquals(0, rs.size(), "Pushing a five then popping it should give an empty stack");
+    assertThrows(EmptyStackException.class, () -> rs.pop(),
+        "Push, pop, pop should throw an exception");
+    // Pop initially returned a fake result (any int that you provided as a return value) hence to
+    // make this test pass, I had to adapt it so that it returns the value that was previously
+    // pushed onto the stack.
+  }
+
+  @Test // Test 5
+  void pushTwice() {
+    rs.push(ent1);
+    rs.push(ent2);
+    assertEquals(2, rs.size(), "Pushing twice should give size 2");
+    assertEquals(ent2, rs.pop(),
+        "Pushing twice and then popping should return the second thing pushed (String)");
+    assertEquals(ent1, rs.pop(), "Popping again should return the first thing pushed (10.0)");
+    assertEquals(0, rs.size(), "Pushing a five then popping it should give an empty stack");
+    assertThrows(EmptyStackException.class, () -> rs.pop(),
+        "Push, pop, pop should throw an exception");
+    // Initially, the stack was written that it would take only one value. To make this test pass, I
+    // changed it so that the stack is a simple array which can take up to 10 items.
+
+  }
+
+  @Test // Test 6
+  void pushLots() {
+    for (int index = 0; index < 1000; index++) {
+      rs.push(ent1);
+    }
+    assertEquals(1000, rs.size(), "Pushing should increase the size");
+    // The stack was initially instantiated as a simple array (value[]) which held only 10 times
+    // items. To pass the test, I changed the array into an ArrayList.
+  }
+
+  @Test // Test 7
+  void testTop() {
+    assertThrows(EmptyStackException.class, () -> rs.top(),
+        "Top should throw an exception since stack is empty.");
+    rs.push(ent1);
+    rs.push(ent2);
+    rs.push(ent3);
+    assertEquals(rs.top(), ent3,
+        "Pushing ent1(10.0), ent2(String) and ent3(LEFT_BRACKET) and then reading top value should show LEFT_BRACKET and not remove it.");
+    assertEquals(rs.top(), ent3, "If ent3(LEFT_BRACKET) has not been removed, it is still on top.");
+    assertEquals(rs.pop(), ent3, "Popping top value should print ent3(LEFT_BRACKET) and remove it");
+    assertEquals(rs.top(), ent2,
+        "After the ent3 has been removed, ent2(String) should now be on top.");
+    // To pass this test I had to create the top method. At first it returned the top int of the
+    // stack without removing it. It was later changed to do the same, but with an Entry item.
+  }
+}

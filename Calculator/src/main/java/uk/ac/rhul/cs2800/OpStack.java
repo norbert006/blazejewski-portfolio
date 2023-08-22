@@ -1,0 +1,40 @@
+package uk.ac.rhul.cs2800;
+
+import java.util.EmptyStackException;
+
+/**
+ * Class OpStack is a facade which provides a simplified stack of values of type Symbol.
+ * 
+ * @author Norbert Blazejewski
+ *
+ */
+public class OpStack {
+  private final Stack opStack = new Stack();
+
+  /**
+   * This method checks if the stack is empty (delegated to the contained stack class).
+   * 
+   * @return true if stack is empty(when opStack.size() is equal to 0 and false otherwise.
+   */
+  public final boolean isEmpty() {
+    return opStack.size() == 0;
+  }
+
+  /**
+   * Pushes a new Symbol Entry value onto the stack (delegated to the contained Stack class).
+   * 
+   * @param item - the item that is pushed onto the stack.
+   */
+  public final void push(Symbol item) {
+    opStack.push(new Entry(item));
+  }
+
+  /**
+   * Removes the object at the top of this stack and returns its value (delegated to stack class).
+   * 
+   * @return the Symbol at the top of the stack.
+   */
+  public final Symbol pop() throws EmptyStackException {
+    return opStack.pop().getSymbol();
+  }
+}

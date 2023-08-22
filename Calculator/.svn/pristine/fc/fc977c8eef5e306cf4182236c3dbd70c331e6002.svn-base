@@ -1,0 +1,61 @@
+package uk.ac.rhul.cs2800;
+
+/**
+ * The RevPolishCalc class is responsible for evaluating Reverse Polish String expressions.
+ * 
+ * @author Norbert Blazejewski
+ *
+ */
+public class RevPolishCalc {
+  NumStack values = new NumStack();
+
+  /**
+   * This method uses the Reverse Polish Notation to evaluate an expression and return the results.
+   * 
+   * @param expression - the expression to be evaluated.
+   * @return a float value that is the result to the evaluated expression.
+   */
+  public float evaluate(String expression) {
+    if (expression.equals(" ")) { // If the expression is blank, for now it returns any odd value.
+      return 10;
+    } else {
+      // The .split() allows to split the String expression into an array of substrings. The regex
+      // (\\s+") inside the split function splits the string based on any number of white spaces.
+      for (String token : expression.split("\\s+")) {
+        switch (token) {
+          case "+":
+            // The top two values on the stack are added if the token is a + and the result is
+            // pushed onto the stack.
+            values.push(values.pop() + values.pop());
+            break;
+          case "-":
+            // The value at the top of the stack is subtracted from by the value that is next in the
+            // stack. The result is pushed to the top of the stack.
+            float val1 = values.pop();
+            float val2 = values.pop();
+            values.push(val2 - val1);
+            break;
+          case "*":
+            // The top two values on the stack are multiplied if the token is a * and the result is
+            // pushed onto the stack.
+            values.push(values.pop() * values.pop());
+            break;
+          case "/":
+            // The value of the top of the stack is used as a divisor for the next value in the
+            // stack. The result is pushed back onto the stack.
+            float divisor = values.pop();
+            values.push(values.pop() / divisor);
+            break;
+          default:
+            // If the token is not a + or a -, the value is pushed
+            // onto the stack.
+            values.push(Float.parseFloat(token));
+            break;
+        }
+      }
+      // Returns the result of the expression which is at the top of the stack.
+      return values.pop();
+    }
+  }
+}
+

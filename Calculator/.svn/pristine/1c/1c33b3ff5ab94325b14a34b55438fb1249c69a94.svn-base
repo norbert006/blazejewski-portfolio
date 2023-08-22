@@ -1,0 +1,14 @@
+package uk.ac.rhul.cs2800;
+
+import static org.junit.jupiter.api.Assertions.*;
+import org.junit.jupiter.api.Test;
+
+class TestStrStack {
+
+  @Test
+  void testBuildStrStack() {
+    StrStack strStack = new StrStack();
+    // To pass this test, a new StrStack object must be created.
+  }
+
+}

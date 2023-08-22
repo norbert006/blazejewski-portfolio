@@ -1,0 +1,35 @@
+package uk.ac.rhul.cs2800;
+
+/**
+ * The StandardCalc class is responsible for evaluating infix string expression through the use of a
+ * Reverse Polish Calculator.
+ * 
+ * @author Norbert Blazejewski
+ *
+ */
+public class StandardCalc {
+  OpStack values = new OpStack();
+  RevPolishCalc rpCalc = new RevPolishCalc();
+
+  /**
+   * This method uses the Shunting Yard algorithm to evaluate the expression given by the user.
+   * 
+   * @param expression - the expression to be evaluated.
+   * @return a float value that is the result to the evaluated expression.
+   * @throws InvalidExpressionException - throws a custom exception message when the user provides a
+   *         blank expression.
+   */
+  public float evaluate(String expression) throws InvalidExpressionException {
+    if (expression.isBlank()) {
+      throw new InvalidExpressionException("The provided expression cannot be blank");
+    } else {
+      // The String variable output will be a reordered version of the parameter expression that
+      // will work with the RevPolishCalc.
+      String rearrangedExpression = new String("");
+      // For now this output will be faking a result.
+      rearrangedExpression = rearrangedExpression + "1 3 +";
+      float output = rpCalc.evaluate(rearrangedExpression);
+      return output;
+    }
+  }
+}

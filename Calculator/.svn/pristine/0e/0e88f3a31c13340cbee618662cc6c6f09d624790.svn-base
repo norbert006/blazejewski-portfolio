@@ -1,0 +1,21 @@
+package uk.ac.rhul.cs2800;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+
+class TestStrStack {
+private StrStack strStack;
+  
+  @BeforeEach
+  public void setup() {
+    strStack = new StrStack();
+  }
+
+  @Test //Test 1
+  void test_isEmpty() {
+    assertEquals(strStack.isEmpty(), true, "Test a newly created strStack to see that it is empty (meaning it has size 0.");
+    //To pass this test, the value of strStack.size() must return 0.
+  }
+
+}

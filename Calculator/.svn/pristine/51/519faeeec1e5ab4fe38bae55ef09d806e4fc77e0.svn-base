@@ -1,0 +1,21 @@
+package uk.ac.rhul.cs2800;
+
+/**
+ * Class NumStack is a facade which provides a simplified stack of numbers of type float.
+ * 
+ * @author Norbert Blazejewski
+ *
+ */
+public class NumStack {
+
+  private final Stack numStack = new Stack();
+  
+  /**
+   * This method is delegated to the contained stack class.
+   * 
+   * @return true if stack is empty(when numStack.size() is equal to 0 and false otherwise.
+   */
+  public final boolean isEmpty() {
+    return numStack.size() == 0;
+  }
+}

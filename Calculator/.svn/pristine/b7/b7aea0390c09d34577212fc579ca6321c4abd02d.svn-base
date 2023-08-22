@@ -1,0 +1,40 @@
+package uk.ac.rhul.cs2800;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+
+class TestStandardCalc {
+  StandardCalc sc;
+
+  @BeforeEach
+  void setup() {
+    sc = new StandardCalc();
+  }
+
+  @Test // Test 1
+  void testEvaluate2() throws InvalidExpressionException {
+    assertEquals(sc.evaluate("2"), 2,
+        "Test that evalute returns the same value that was given in the expression but parsed as a float");
+    // To pass the test the evaluate method returns the same value that was given in the expression.
+    // UPDATE: after adding Test 3, this test cannot pass due to faking. 
+  }
+
+  @Test // Test 2
+  void testThrowException() {
+    assertThrows(InvalidExpressionException.class, () -> sc.evaluate("  "),
+        "Expression cannot be blank.");
+    assertThrows(InvalidExpressionException.class, () -> sc.evaluate(""),
+        "Expression cannot be blank.");
+    // To pass this test, the exception must be called when the user provides a blank expression.
+  }
+
+  @Test // Test 3
+  void testSimpleAddition() throws InvalidExpressionException {
+    assertEquals(sc.evaluate("1 + 3"), 4, "Calculation of 1 + 3 should result in 4");
+    // To pass this test, a new empty String variable was created in the evaluation method. Then,
+    // through faking, the correct answer was appended to the rearrangedExpression string. This new
+    // string was then used in the RevPolishCalc method and its output was returned.
+  }
+}

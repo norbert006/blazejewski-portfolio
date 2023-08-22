@@ -1,0 +1,29 @@
+package uk.ac.rhul.cs2800;
+
+/**
+ * Class StrStack is a facade which provides a simplified stack of values of type String.
+ * 
+ * @author Norbert Blazejewski
+ *
+ */
+public class StrStack {
+  private final Stack strStack = new Stack();
+
+  /**
+   * This method checks if the stack is empty (delegated to the contained stack class).
+   * 
+   * @return true if stack is empty(when strStack.size() is equal to 0) and false otherwise.
+   */
+  public final boolean isEmpty() {
+    return strStack.size() == 0;
+  }
+
+  /**
+   * Pushes a new Symbol Entry value onto the stack (delegated to the contained Stack class).
+   * 
+   * @param value - the item that is pushed onto the stack.
+   */
+  public final void push(String item) {
+    strStack.push(new Entry(item));
+  }
+}

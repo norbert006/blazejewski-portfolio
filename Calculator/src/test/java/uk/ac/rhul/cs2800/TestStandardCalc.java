@@ -1,0 +1,203 @@
+package uk.ac.rhul.cs2800;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+
+class TestStandardCalc {
+  StandardCalc sc;
+
+  @BeforeEach
+  void setup() {
+    sc = new StandardCalc();
+  }
+
+  @Test // Test 1
+  void testEvaluate2() throws InvalidExpressionException {
+    assertEquals(sc.evaluate("2"), 2,
+        "Test that evalute returns the same value that was given in the expression but parsed as a float");
+    // To pass the test the evaluate method returns the same value that was given in the expression.
+  }
+
+  @Test // Test 2
+  void testThrowException() {
+    assertThrows(InvalidExpressionException.class, () -> sc.evaluate("  "),
+        "Expression cannot be blank.");
+    assertThrows(InvalidExpressionException.class, () -> sc.evaluate(""),
+        "Expression cannot be blank.");
+    // To pass this test, the exception must be called when the user provides a blank expression.
+  }
+
+  @Test // Test 3
+  void testSimpleAddition() throws InvalidExpressionException {
+    assertEquals(sc.evaluate("1 + 3"), 4, "Calculation of 1 + 3 should result in 4");
+    // To pass this test, a new empty String variable was created in the evaluation method.
+    // Initially, this test passed through faking, however, it has now been updated to pass without
+    // faking. To this this, a stack was added inside the evaluate method which holds the + operator
+    // and then appends it to the end of the rearrangedExpression.
+  }
+
+  @Test // Test 4
+  void testMoreAddition() throws InvalidExpressionException {
+    assertEquals(sc.evaluate("3 + 5"), 8, "Calculation of 3 + 5 should result in 8");
+    assertEquals(sc.evaluate("3 + 4 + 5"), 12, "Calculation of 3 + 4 + 5 should result in 12");
+    assertEquals(sc.evaluate("3 + 4 + 5 + 6 + 7"), 25,
+        "Calculation of 3 + 4 + 5 + 6 + 7 should result in 25");
+    // To pass this test, the evaluation method had to be updated. The if (!symbolStack.isEmpty())
+    // had to be changed to while (!symbolStack.isEmpty())
+  }
+
+  @Test // Test 5
+  void testSimpleSubtraction() throws InvalidExpressionException {
+    assertEquals(sc.evaluate("4 - 3"), 1, "Calculation 4 - 3 should result in 1");
+    assertEquals(sc.evaluate("10 - 2 - 1"), 7, "Calculation 10 - 2 - 1 should result in 7");
+    // To pass this test, the evaluate method had to be updated again and now includes extra else if
+    // statements to allow the stack to pop and append operators in the correct position in the
+    // string.
+  }
+
+  @Test // Test 6
+  void testMixAdditionAndSubtraction() throws InvalidExpressionException {
+    assertEquals(sc.evaluate("10 + 2 - 3"), 9, "Calculation 10 + 2 - 3 should evalute to 9");
+    assertEquals(sc.evaluate("10 - 2 + 3"), 11, "Calculation 10 - 2 + 3 should evalute to 1");
+    assertEquals(sc.evaluate("10 - 2 + 3 + 4 - 11 - 5 + 7"), 6,
+        "Calculation 10 - 2 + 3 + 4 - 11 - 5 + 7 should evalute to 6");
+    // To pass this test, another two else if statements had to be added to the evaluation method.
+    // One of them checks if the operator in the current iteration through the expression is a + and
+    // the stack top is a -. The second if statement checks the same but the operators are swapped.
+    // Both if statements carry out the same task of popping the top element from the stack, adding
+    // it to the rearrangedExpression and then pushing the current operator onto the stack.
+
+  }
+
+  @Test // Test 7
+  void testSimpleMultiplication() throws InvalidExpressionException {
+    assertEquals(sc.evaluate("3 * 4"), 12, "Calculation 3 * 4 should evaluate to 12.");
+    // To pass this test, another else if statement was added which now checks if the value at the
+    // top of the stack is the * operator. Inside the else if statement computes the same things as
+    // the other else if statements.
+  }
+
+  @Test // Test 8
+  void testMoreMultiplication() throws InvalidExpressionException {
+    assertEquals(sc.evaluate("3 * 4 * 5"), 60, "Calculation 3 * 4 * 5 should evaluate to 60.");
+    assertEquals(sc.evaluate("3 * 4 * 5 * 2"), 120,
+        "Calculation 3 * 4 * 5 * 2 should evaluate to 120.");
+    // To pass these test nothing had to be changed in the StandardCalc class.
+  }
+
+  @Test // Test 9
+  void testMultiplicationAndAddition() throws InvalidExpressionException {
+    assertEquals(sc.evaluate("3 * 4 + 5"), 17, "Calculation 3 * 4 + 5 should evaluate to 17");
+    assertEquals(sc.evaluate("3 + 4 * 5"), 23, "Calculation 3 + 4 * 5 should evaluate to 23");
+    assertEquals(sc.evaluate("3 + 4 * 5 + 2"), 25,
+        "Calculation 3 + 4 * 5 + 2 should evaluate to 25");
+    assertEquals(sc.evaluate("3 + 4 * 5 * 2 + 3"), 46,
+        "Calculation 3 + 4 * 5 * 2 + 3 should evaluate to 46");
+    assertEquals(sc.evaluate("3 * 4 + 5 + 2 * 3"), 23,
+        "Calculation 3 * 4 + 5 + 2 * 3 should evaluate to 23");
+
+    assertEquals(sc.evaluate("3 + 4 * 5 * 5 + 2 + 3 + 4 * 2 * 3"), 132,
+        "Calculation 3 + 4 * 5 * 5 + 2 + 3 + 4 * 2 * 3 should evaluate to 132");
+    // To make this test pass, additional else if statements were added which operate based on
+    // underlying precedence.
+  }
+
+  @Test // Test 10
+  void testMultiplicationAndSubtraction() throws InvalidExpressionException {
+    assertEquals(sc.evaluate("3 * 4 - 5"), 7, "Calculation 3 * 4 - 5 should evaluate to 7");
+    assertEquals(sc.evaluate("3 - 4 * 5"), -17, "Calculation 3 - 4 * 5 should evaluate to -17");
+
+    assertEquals(sc.evaluate("3 - 4 * 5 * 5 - 2 - 3 - 4 * 2 * 3"), -126,
+        "Calculation 3 - 4 * 5 * 5 - 2 - 3 - 4 * 2 * 3 should evaluate to -126");
+
+    assertEquals(sc.evaluate("3 * 4 - 5 - 5 * 2 * 3 * 4 - 2 - 3"), -118,
+        "Calculation 3 * 4 - 5 - 5 * 2 * 3 * 4 - 2 - 3 should evaluate to -118");
+    // To pass this test, more else if statements were added based on whether the top of the stack
+    // is a - or * operator.
+  }
+
+  @Test // Test 11
+  void testMultiplicationAdditionSubtraction() throws InvalidExpressionException {
+    assertEquals(sc.evaluate("3 * 4 - 5 + 9"), 16,
+        "Calculation 3 * 4 - 5 + 9 should evaluate to 16");
+    assertEquals(sc.evaluate("3 * 4 - 5 - 5 * 2 * 3 * 4 - 2 - 3 + 2 + 3 + 4 * 5 * 7 + 2 - 1 - 3"),
+        25,
+        "Calculation 3 * 4 - 5 - 5 * 2 * 3 * 4 - 2 - 3 + 2 + 3 + 4 * 5 * 7 + 2 - 1 - 3 should evaluate to 25");
+    // Nothing had to be changed to pass these tests.
+  }
+
+  @Test // Test 12
+  void testSimpleDivision() throws InvalidExpressionException {
+    assertEquals(sc.evaluate("12 / 4"), 3, "Calculation 12 / 4 should evaluate to 3.");
+    // To pass this test, the second if statement inside the evaluate method had to also include the
+    // case if c == '/'.
+  }
+
+  @Test // Test 13
+  void testMoreDivision() throws InvalidExpressionException {
+    assertEquals(sc.evaluate("100 / 2 / 10"), 5, "Calculation 100 / 2 / 10 should evaluate to 5");
+    assertEquals(sc.evaluate("100 / 2 / 10 / 2"), 2.5,
+        "Calculation 100 / 2 / 10 / 2 should evaluate to 2.5");
+    // To pass this test, a new else if statement had to be added which checks if the both the top
+    // of the stuck and the current value of c is the / operator. Inside the else if statement, the
+    // top of the stack is popped, appended to the end of the rearrangedExpression string and then
+    // the current value of c is pushed to the top of the stack.
+  }
+
+  @Test // Test 14
+  void testDivisionAndAddition() throws InvalidExpressionException {
+    assertEquals(sc.evaluate("100 / 2 + 5"), 55, "Calculation 100 / 2 + 5 should evalute to 55.");
+    assertEquals(sc.evaluate("100 / 2 + 5 + 3 + 4"), 62,
+        "Calculation 100 / 2 + 5 + 3 + 4 should evalute to 62.");
+    assertEquals(sc.evaluate("100 / 2 + 5 + 3 + 4 / 2 / 4"), 58.5,
+        "Calculation 100 / 2 + 5 + 3 + 4 / 2 / 4 should evalute to 58.5.");
+    // To pass this test, two new else if statements were added. One checks the case if the top of
+    // the stack is a + and the current value of c is a / (in this case, the / is pushed to the top
+    // of the stack). The second checks if the / operator is at the top of the stack and if current
+    // value of c is the + operator (in this case, the top of the stack is popped, appended to the
+    // end of the rearrangedExpression string and then the current value of c is pushed to the top
+    // of the stack).
+  }
+
+  @Test // Test 15
+  void testDivisionAndSubtraction() throws InvalidExpressionException {
+    assertEquals(sc.evaluate("100 / 5 - 10"), 10, "Calculation 100 / 5 - 10 should evalute to 10.");
+    assertEquals(sc.evaluate("100 - 5 / 10"), 99.5,
+        "Calculation 100 - 5 / 10 should evalute to 99.5.");
+    assertEquals(sc.evaluate("100 / 2 - 5 - 3 - 4"), 38,
+        "Calculation 100 / 2 - 5 - 3 - 4 should evalute to 38.");
+    assertEquals(sc.evaluate("100 / 2 - 5 - 3 - 4 / 2 / 4"), 41.5,
+        "Calculation 100 / 2 - 5 - 3 - 4 / 2 / 4 should evalute to 41.5.");
+    // To pass this test, two new else if statements were added. One checks the case if the top of
+    // the stack is a - and the current value of c is a / (in this case, the / is pushed to the top
+    // of the stack). The second checks if the / operator is at the top of the stack and if current
+    // value of c is the - operator (in this case, the top of the stack is popped until it is empty,
+    // appended to the end of the rearrangedExpression string and then the current value of c is
+    // pushed to the top of the stack).
+  }
+
+  @Test // Test 16
+  void testDivisionAndMultiplication() throws InvalidExpressionException {
+    assertEquals(sc.evaluate("100 / 5 * 2"), 40, "Calculation 100 / 5 * 2 should evaluate to 40.");
+    assertEquals(sc.evaluate("100 * 5 / 2"), 250,
+        "Calculation 100 * 5 / 2 should evaluate to 250.");
+    assertEquals(sc.evaluate("100 / 10 / 5 * 2 * 3 * 4 / 8 / 2"), 3,
+        "Calculation 100 / 10 / 5 * 2 * 3 * 4 / 8 / 2 should evalute to 3.");
+    // To pass this test, two new else if statements were added. One checks the case if the top of
+    // the stack is a * and the current value of c is a /. The second checks if the / operator is at
+    // the top of the stack and if current value of c is the * operator. In both cases, the top of
+    // the stack is popped, appended to the end of the rearrangedExpression string and then the
+    // current value of c is pushed to the top of the stack).
+  }
+
+  @Test // Test 17
+  void testMixOfEverything() throws InvalidExpressionException {
+    assertEquals(sc.evaluate("10 + 2 * 5 / 4"), 12.5,
+        "Calculation 10 + 2 * 5 / 3 should evaluate to 12.5");
+    assertEquals(sc.evaluate("10 * 5 * 2 + 6 + 4 + 15 / 5 / 2 - 10 - 10 / 5"), 99.5,
+        "Calculation 10 * 5 * 2 + 6 + 4 + 15 / 5 / 2 - 10 - 10 / 5 should evalute to 99.5.");
+    // Nothing needed to be added to the StandardCalc class to pass this test.
+  }
+}

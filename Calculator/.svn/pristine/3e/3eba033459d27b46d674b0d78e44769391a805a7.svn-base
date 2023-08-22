@@ -1,0 +1,19 @@
+package uk.ac.rhul.cs2800;
+
+/**
+ * The StandardCalc class is responsible for evaluating infix string expression through the use of a
+ * Reverse Polish Calculator.
+ * 
+ * @author Norbert Blazejewski
+ *
+ */
+public class StandardCalc {
+  OpStack values = new OpStack();
+  RevPolishCalc rpCalc = new RevPolishCalc();
+  
+  public float evaluate(String expression) {
+    return Float.parseFloat(expression);
+  }
+  
+  
+}

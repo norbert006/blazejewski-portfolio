@@ -1,0 +1,24 @@
+package uk.ac.rhul.cs2800;
+
+/**
+ * The RevPolishCalc class is responsible for evaluating Reverse Polish String expressions.
+ * 
+ * @author Norbert Blazejewski
+ *
+ */
+public class RevPolishCalc {
+  NumStack values = new NumStack();
+
+  /**
+   * This method uses the Reverse Polish Notation to evaluate an expression and return the results.
+   * 
+   * @param expression - the expression to be evaluated.
+   * @return the result to the evaluated expression.
+   */
+  public float evaluate(String expression) {
+    if (expression.equals(" ")) {
+      return 10;
+    }
+    return Float.parseFloat(expression);
+  }
+}

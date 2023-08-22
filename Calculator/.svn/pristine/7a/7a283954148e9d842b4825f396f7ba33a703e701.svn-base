@@ -1,0 +1,20 @@
+package uk.ac.rhul.cs2800;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+
+class TestStandardCalc {
+  StandardCalc sc;
+
+  @BeforeEach
+  void setup() {
+    sc = new StandardCalc();
+  }
+
+  @Test // 1
+  void testEvaluate2() {
+    assertEquals(sc.evaluate("2"), 2,
+        "Test that evalute returns the same value that was given in the expression but parsed as a float");
+  }
+}

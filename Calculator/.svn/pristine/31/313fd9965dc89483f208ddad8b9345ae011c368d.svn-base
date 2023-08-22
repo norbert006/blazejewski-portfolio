@@ -1,0 +1,53 @@
+package uk.ac.rhul.cs2800;
+
+/**
+ * The StandardCalc class is responsible for evaluating infix string expression through the use of a
+ * Reverse Polish Calculator.
+ * 
+ * @author Norbert Blazejewski
+ *
+ */
+public class StandardCalc {
+  RevPolishCalc rpCalc = new RevPolishCalc();
+
+  /**
+   * This method uses the Shunting Yard algorithm to evaluate the expression given by the user.
+   * 
+   * @param expression - the expression to be evaluated.
+   * @return a float value that is the result to the evaluated expression.
+   * @throws InvalidExpressionException - throws a custom exception message when the user provides a
+   *         blank expression.
+   */
+  public float evaluate(String expression) throws InvalidExpressionException {
+    if (expression.isBlank()) {
+      throw new InvalidExpressionException("The provided expression cannot be blank");
+    } else {
+      // symbolStack holds the operator that is given in the expression.
+      StrStack symbolStack = new StrStack();
+      // RearrangedExpression is a String which will hold the numerical values from the expression.
+      String rearrangedExpression = new String("");
+      // Iterating through the expression, if a character is the + operator it is added to the
+      // stack, otherwise, the character is appended to rearrangedExpression.
+      for (int i = 0; i < expression.length(); i++) {
+        char c = expression.charAt(i);
+        if (c == '+') {
+          symbolStack.push(String.valueOf(c));
+        } else {
+          rearrangedExpression += c;
+        }
+      }
+      // Popping the operator from the top of the stack to add it to the back of the expression to
+      // be evaluated.
+      String operator = null;
+      // If the stack is not empty, pop the operator and append it to the end of the
+      // rearrangedExpression.
+      while (!symbolStack.isEmpty()) {
+        operator = symbolStack.pop();
+        rearrangedExpression = rearrangedExpression + " " + operator;
+      }
+      float output = rpCalc.evaluate(rearrangedExpression);
+      return output;
+
+    }
+  }
+}
