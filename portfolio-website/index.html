@@ -18,13 +18,15 @@
         <div id="header">
             <nav>
                 <h2 class="logo">Online CV</h2>
-                <ul>
+                <ul id="sideMenu">
                     <li><a href="#about">Profile</a></li>
                     <li><a href="#portfolio">My Work</a></li>
                     <li><a href="#contact">Contact</a></li>
+                    <i class="fa-solid fa-xmark" onclick="closeMenu()"></i>
                 </ul>
+                <i class="fa-solid fa-bars" onclick="openMenu()"></i>
             </nav>
-            <div class="container">
+            <div class="container" onclick="closeMenu()">
                 <div class="header-content">
                     <div class="header-text">
                         <h1>Hi, I'm Norbert Blazejewski</h1>
@@ -34,7 +36,7 @@
             </div>
         </div>
 
-        <div id="about">
+        <div id="about" onclick="closeMenu()">
             <div class="container">
                 <div class="row">
                     <div class="image-column">
@@ -110,7 +112,7 @@
             </div>
         </div>
 
-        <div id="portfolio">
+        <div id="portfolio" onclick="closeMenu()">
             <div class="container">
                 <h1 class="sub-title">My Work</h1>
                 <div class="work-list">
@@ -141,7 +143,7 @@
             </div>
         </div>
 
-        <div id="contact">
+        <div id="contact" onclick="closeMenu()">
             <div class="container">
                 <div class="contact-details">
                     <h1 class="sub-title">Contact Me</h1>
@@ -157,7 +159,7 @@
             <p>Created by Norbert Blazejewski</p>
         </footer>
 
-        <script>
+        <script> //Script for underlining the currently selected tab within the "Profile" section.
             var tablinks = document.getElementsByClassName("tab-links") //tablinks holds all the tags that contain class "tab-links" i.e the tab titles.
             var tabcontents = document.getElementsByClassName("tab-contents") //tabcontents holds all the tags that contain class "tab-contents" i.e the content for each tab.
             function opentab(tabname) {
@@ -169,6 +171,16 @@
                 }
                 event.currentTarget.classList.add("active-link") //add "active-link" class name to the tab that was clicked on to make it underlined.
                 document.getElementById(tabname).classList.add("active-tab") //add "active-tab" class name to the tab that was clicked on to display relevant info.
+            }
+        </script>
+
+        <script> //Script for opening and closing the side menu on a device with a smaller screen.
+            var sideMenu = document.getElementById("sideMenu");
+            function openMenu() {
+                sideMenu.style.right = "0";
+            }
+            function closeMenu() {
+                sideMenu.style.right = "-200px";
             }
         </script>
 
