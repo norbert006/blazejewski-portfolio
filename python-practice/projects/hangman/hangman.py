@@ -24,12 +24,14 @@ def hangman(word):
         print("\n")
         message = "Guess a letter: "
         char = input(message)
-        if char in rletters: #If user guesses a letter correctly.
-            cind = rletters.index(char) #Get the first index of the letter guessed by the player.
-            board[cind] = char #Replace the corresponding underscore with the correct letter.
-            rletters[cind] = '$' #Replace the letter in rletters with $ so that the game can go through the whole word in case a letter repeats.
-        else:
-            wrong += 1
+        times = word.count(char) #Count how many times the guessed character appears in the word.
+        for i in range(times): #Repeat the processes of unveiling the letter so that all of its instances are unveiled.
+            if char in rletters: #If user guesses a letter correctly.
+                cind = rletters.index(char) #Get the first index of the letter guessed by the player.
+                board[cind] = char #Replace the corresponding underscore with the correct letter.
+                rletters[cind] = '$' #Replace the letter in rletters with $ so that the game can go through the whole word in case a letter repeats.
+            else:
+                wrong += 1
 
         print((" ".join(board))) #Print the scoreboard (the underscores / correctly guessed letters).
         e = wrong + 1
@@ -44,4 +46,4 @@ def hangman(word):
         print("\n".join(stages[0: wrong])) #Print whole hangman.
         print("You lose! It was {}.".format(word))
 
-hangman("cat")
+hangman("caccc")
