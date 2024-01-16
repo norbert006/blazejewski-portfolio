@@ -1,3 +1,7 @@
+'''
+Credit to: Cory Althoff (https://github.com/calthoff/self_taught/blob/master/python_ex239.py/)
+'''
+
 #Hangman function to store the game.
 #Word variable is the word that the player tries to guess.
 def hangman(word): 
