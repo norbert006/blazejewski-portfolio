@@ -24,7 +24,7 @@ def hangman(word):
     print("Welcome to Hangman")
 
     while wrong < len(stages) - 1:
-        print("\n")
+        print("\n") 
         message = "Guess a letter: "
         char = input(message)
         times = word.count(char) #Count how many times the guessed character appears in the word.
@@ -45,6 +45,7 @@ def hangman(word):
             print(" ".join(board))
             win = True
             break
+
     if not win:
         print("\n".join(stages[0: e])) #Print whole hangman.
         print("You lose! It was {}.".format(word))
