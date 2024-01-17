@@ -11,7 +11,7 @@ def hangman(word):
     wrong = 0 #Number of incorrect guesses.
     stages = ["",
              "________        ",
-             "|               ",
+             "|        |      ",
              "|        |      ",
              "|        0      ",
              "|       /|\     ",
