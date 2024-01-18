@@ -1,0 +1,45 @@
+* {
+    box-sizing: border-box; /* This property means that elements will have the same padding and border size.  */
+}
+
+body {
+    font-family: sans-serif;
+    /* font-style: italic; */
+    margin: 0;
+    background-color: #f3f0d7;
+    overflow-y: scroll;
+}
+
+/* ---------------------------------------- Navbar styling ---------------------------------------- */
+
+/* Styling the navbar */
+nav {
+    font-family: 'Josefin Sans', sans-serif;
+    background-color: #2d715a;
+    color: #fcfcfc; /* Changes the text color */
+    display: flex;
+    align-items: center; /* Aligns the flex items at the center of the container (vertically). */
+    justify-content: space-between; /* Value displays the flex items with space between the lines (horizontally). */
+    gap: 2rem; /* Sets the gap between the two elements (so if they get too close together, the specified gap size will be maintained.  */
+    padding: 0 2rem;
+    margin-right: auto;
+    /* border-bottom: 1px solid #5f7745; */
+    height: 175px;
+}
+
+/* This controls how the different tabs are displayed inside the navbar. */
+.tabs {
+    display: flex;
+    align-items: center; /* Aligns the flex items at the center of the container (vertically). */
+    justify-content: space-between; /* Value displays the flex items with space between the lines (horizontally). */
+    gap: 1.5rem; /* Sets the gap between the two elements (so if they get too close together, the specified gap size will be maintained.  */
+    padding: 0 1rem;
+    list-style: none; /* This removes the bulletpoints. */
+    font-size: large;
+}
+
+/* This makes sure that the text inside the navbar stays the same colour and is not underlined. */
+nav a {
+    color: inherit; /* This makes sure that the text does not change colour (because links usually turn purple after they are clicked). */
+    text-decoration: none; /* This makes sure that the tabs (which are links to different routes) are not underlined. */
+}
